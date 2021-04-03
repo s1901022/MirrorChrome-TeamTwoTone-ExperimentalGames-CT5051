@@ -10,12 +10,14 @@ public class StageData
     public string stageBuildName;
     public bool collectableGot;
     public float bestTime;
+    public float targetTime;
     public int numberOfFlips;
     public int targetnumberOfFlips;
 }
 
 public static class Stage_Data
 {
+    static int Progression;
     static List<StageData> stageDatas = new List<StageData>();
 
     public static void Initialise(List<StageData> a_loadedStageData)
@@ -60,5 +62,25 @@ public static class Stage_Data
             return;
         }
         Debug.LogError("Stage does not exist");
+    }
+
+    public static void LoadSavedStageData(int a_stageNumber, SaveData a_saveData)
+    {
+        if (a_stageNumber < stageDatas.Count)
+        {
+            stageDatas[a_stageNumber].bestTime = a_saveData.GetBestTime(a_stageNumber);
+            stageDatas[a_stageNumber].collectableGot = a_saveData.GetCollectables(a_stageNumber);
+            stageDatas[a_stageNumber].numberOfFlips = a_saveData.GetNumberOfFlips(a_stageNumber);
+        }
+    }
+
+    public static int GetNumberOfStages()
+    {
+        return stageDatas.Count;
+    }
+
+    public static int GetProgress()
+    {
+        return Progression;
     }
 }
