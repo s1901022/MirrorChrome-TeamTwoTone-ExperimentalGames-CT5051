@@ -7,11 +7,19 @@ public class scrChangeScene : MonoBehaviour
 {
     public string sceneToLoad;
 
+    GameObject canvas;
+
     void OnTriggerEnter2D(Collider2D col)
     {
+        canvas = GameObject.FindGameObjectWithTag("EndLevelCanvas");
         if (col.gameObject.tag == "Player")
         {
-            Stage_Loader.LoadSceneSafe(sceneToLoad);
+            canvas.GetComponent<LevelClearScript>().isActive = true;
         }
+    }
+
+    public void Load() {
+        Time.timeScale = 1.0f;
+        Stage_Loader.LoadSceneSafe(sceneToLoad);
     }
 }
