@@ -53902,5 +53902,15 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 392528199}
+    - target: {fileID: 1466356360709853463, guid: fd067a6d81c515849b2b60b00f6a8e79,
+        type: 3}
+      propertyPath: time
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466356360709853463, guid: fd067a6d81c515849b2b60b00f6a8e79,
+        type: 3}
+      propertyPath: jumps
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd067a6d81c515849b2b60b00f6a8e79, type: 3}

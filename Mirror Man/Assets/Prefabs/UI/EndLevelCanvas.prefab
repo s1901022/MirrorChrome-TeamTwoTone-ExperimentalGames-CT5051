@@ -397,6 +397,10 @@ MonoBehaviour:
   - {fileID: 1466356361194193345}
   - {fileID: 1466356361389529723}
   - {fileID: 1466356359580615480}
+  flips: 0
+  time: 0
+  jumps: 0
+  completedStar: {fileID: 21300000, guid: 8ca679a759b6405498da5a4459088995, type: 3}
 --- !u!1 &1466356361194193345
 GameObject:
   m_ObjectHideFlags: 0
