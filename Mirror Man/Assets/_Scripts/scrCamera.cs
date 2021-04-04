@@ -32,11 +32,18 @@ public class scrCamera : MonoBehaviour {
         halfHeight = Camera.main.orthographicSize;
         halfWidth = Camera.main.aspect * halfHeight;
 
-        //if the camera is within the barriers
-
         if ((transform.position.x - halfWidth >= barriers[2].transform.position.x && transform.position.x + halfWidth <= barriers[3].transform.position.x) || (transform.position.y - halfHeight >= barriers[1].transform.position.y && transform.position.y + halfHeight <= barriers[0].transform.position.y)) {
             // lerp towards the player
             Vector3 desiredPosition = target.position + offset;
+			desiredPosition.z = -10;
+			Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+			transform.position = smoothedPosition;
+		}
+		else if ((target.transform.position.x - halfWidth >= barriers[2].transform.position.x && target.transform.position.x + halfWidth <= barriers[3].transform.position.x) || (target.transform.position.y - halfHeight >= barriers[1].transform.position.y && target.transform.position.y + halfHeight <= barriers[0].transform.position.y))
+		{
+			// lerp towards the player
+			Vector3 desiredPosition = target.position + offset;
+			desiredPosition.z = -10;
 			Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
 			transform.position = smoothedPosition;
 		}

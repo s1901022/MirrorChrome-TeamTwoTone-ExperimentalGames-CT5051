@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 841151958774584585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.18, y: 2.19, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,13 +74,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8407251619955603707, guid: bc26f903efba8ae4bb4442148c26736d,
+  m_Sprite: {fileID: 8566768016093172504, guid: c01ef9bf951b7e147b3e1a76c257dea1,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.3804295, y: 2.5600002}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -120,18 +120,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008291185, y: -0.015573427}
+  m_Offset: {x: 0.007013321, y: 0.02594024}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.45, y: 0.61}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.3804295, y: 2.5600002}
+    newSize: {x: 1.3804295, y: 2.5600002}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44686002, y: 0.6188531}
+  m_Size: {x: 1.4161148, y: 2.493711}
   m_EdgeRadius: 0
 --- !u!114 &8887104988629896732
 MonoBehaviour:
@@ -168,15 +168,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumplimit: 0
   moveSpeed: 5
-  jumpForce: 7
+  jumpForce: 8
   grounded: 0
   groundCheck: {fileID: 0}
   checkRadius: 0.5
   ground:
     serializedVersion: 2
     m_Bits: 256
-  idle: {fileID: -8407251619955603707, guid: bc26f903efba8ae4bb4442148c26736d, type: 3}
-  run: {fileID: -8407251619955603707, guid: bc26f903efba8ae4bb4442148c26736d, type: 3}
+  idle: {fileID: 8566768016093172504, guid: c01ef9bf951b7e147b3e1a76c257dea1, type: 3}
+  run: {fileID: -1798016053307384143, guid: d474d0a8103c0904999fede9a890ee5a, type: 3}
 --- !u!114 &841151958774584591
 MonoBehaviour:
   m_ObjectHideFlags: 0
