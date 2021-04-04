@@ -43,7 +43,7 @@ public class scrEntity : MonoBehaviour
             groundCheck = Instantiate(groundC, new Vector3(transform.position.x, -transform.position.y - ((transform.localScale.y / 2) + C_Offset), transform.position.z), Quaternion.identity);
 
         } else {
-            groundCheck = Instantiate(groundC, new Vector3(transform.position.x, transform.position.y - ((transform.localScale.y / 2) + C_Offset), transform.position.z), Quaternion.identity);
+            groundCheck = Instantiate(groundC, new Vector3(transform.position.x, transform.position.y - 0.3879f - ((transform.localScale.y / 2) + C_Offset), transform.position.z), Quaternion.identity);
         }
         groundCheck.transform.parent = gameObject.transform;
     }

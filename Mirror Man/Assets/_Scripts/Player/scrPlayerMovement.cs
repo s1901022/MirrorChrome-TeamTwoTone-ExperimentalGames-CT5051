@@ -33,6 +33,18 @@ public class scrPlayerMovement : MonoBehaviour
     [SerializeField]
     private Sprite run;
 
+    private enum AnimationStates 
+    {
+        Idle,
+        Running,
+        Jumping,
+        Pushing
+    };
+
+    private Animator anim;
+    private AnimationStates animState;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,24 +53,13 @@ public class scrPlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         m_entity = GetComponent<scrEntity>();
         m_mirror = GetComponent<scrSwitchGravity>();
+        anim = GetComponent<Animator>();
+        animState = AnimationStates.Idle;
     }
 
     void FixedUpdate()
     {
-        moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-        if (rb.velocity.x != 0 && spriteRenderer.sprite != run)
-        {
-            spriteRenderer.sprite = run;
-        }
-        else
-        {
-            spriteRenderer.sprite = idle;
-        }
-        if ((facingRight == false && moveInput > 0) || (facingRight == true && moveInput < 0))
-        {
-            AnimationControl();
-        }
+
     }
 
     // Update is called once per frame
@@ -66,6 +67,9 @@ public class scrPlayerMovement : MonoBehaviour
     {
         if (!m_entity.GetDead())
         {
+            moveInput = Input.GetAxis("Horizontal");
+            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+
             if (m_entity.GetGrounded())
             {
                 extraJumps = jumplimit;
@@ -77,10 +81,34 @@ public class scrPlayerMovement : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && m_entity.GetGrounded())
             {
+                animState = AnimationStates.Jumping;
                 rb.velocity = Vector2.up * jumpForce;
                 Debug.Log("JUMPING");
             }
-        }       
+            anim.SetInteger("state", (int)animState);
+            StateSwitch();
+        }
+    }
+
+    private void StateSwitch()
+    {
+        if ((facingRight == false && moveInput > 0) || (facingRight == true && moveInput < 0)) {
+            AnimationControl();
+        }
+
+        if (animState == AnimationStates.Jumping) 
+        {
+            if (m_entity.GetGrounded())
+            {
+                animState = AnimationStates.Idle;
+            }
+        }
+        else if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon) {
+            // Going right
+            animState = AnimationStates.Running;
+        } else {
+            animState = AnimationStates.Idle;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
