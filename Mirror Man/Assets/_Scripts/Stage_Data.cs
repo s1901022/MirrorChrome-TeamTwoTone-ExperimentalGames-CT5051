@@ -1,23 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-[System.Serializable]
-public class StageData
-{
-    public int stageNumber;
-    public string stageName;
-    public string stageBuildName;
-    public bool collectableGot;
-    public float bestTime;
-    public float targetTime;
-    public int numberOfFlips;
-    public int targetnumberOfFlips;
-}
 
 public static class Stage_Data
 {
-    static int Progression;
+    static int Progression = 0;
     static List<StageData> stageDatas = new List<StageData>();
 
     public static void Initialise(List<StageData> a_loadedStageData)
@@ -30,6 +19,16 @@ public static class Stage_Data
         }
 
     }
+
+    public static int GetStageNumber(int a_index) { return stageDatas[a_index].stageNumber; }
+    public static string GetStageName(int a_index) { return stageDatas[a_index].stageName; }
+    public static string GetStageBuildName(int a_index) { return stageDatas[a_index].stageBuildName; }
+    public static float GetTargetTime(int a_index) { return stageDatas[a_index].targetTime; }
+    public static int GetTargetFlips(int a_index) { return stageDatas[a_index].targetnumberOfFlips; }
+    public static Sprite GetIconSprite(int a_index) { return stageDatas[a_index].stageSelectIcon; }
+    public static float GetBestTime(int a_index) { return stageDatas[a_index].bestTime; }
+    public static int GetFlips(int a_index) { return stageDatas[a_index].numberOfFlips; }
+    public static bool GetCollectableBool(int a_index) { return stageDatas[a_index].collectableGot; }
 
     public static void GetStageData(int stageNumber, StageData a_stageData)
     {
@@ -48,7 +47,6 @@ public static class Stage_Data
             return;
         }
         Debug.LogError("Stage does not exist");
-
     }
 
     public static void SetStageData(StageData a_stageData)

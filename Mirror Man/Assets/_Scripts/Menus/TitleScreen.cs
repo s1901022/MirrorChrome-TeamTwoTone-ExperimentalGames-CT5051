@@ -52,6 +52,10 @@ public class TitleScreen : MonoBehaviour
                     Options.sprite  = sOptions[0];
                     About.sprite    = sOptions[0];
                     Exit.sprite     = sExit[0];
+                    if (Selection())
+                    {
+                        StartPlay();
+                    }
                     break;
                 }
             case SELECTIONS.OPTIONS:
@@ -119,9 +123,19 @@ public class TitleScreen : MonoBehaviour
         selection = (SELECTIONS)MenuPos;
     }
 
+    private bool Selection()
+    {
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        {
+            return true;
+        }
+        return false;
+    }
+
     void StartPlay()
     {
-
+        SaveSystem.LoadSaveData();
+        Stage_Loader.LoadSceneSafe("StageSelect");
     }
 
 }
