@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public static class Stage_Data
 {
-    static int Progression = 0;
+    static int Progression = 2;
     static List<StageData> stageDatas = new List<StageData>();
 
     public static void Initialise(List<StageData> a_loadedStageData)
@@ -80,5 +80,13 @@ public static class Stage_Data
     public static int GetProgress()
     {
         return Progression;
+    }
+
+    public static void SetProgress(int a_progress)
+    {
+        if (a_progress > Progression)
+        {
+            Progression = a_progress;
+        }
     }
 }

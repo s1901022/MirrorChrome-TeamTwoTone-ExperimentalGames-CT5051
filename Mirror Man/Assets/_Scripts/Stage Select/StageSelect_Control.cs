@@ -38,6 +38,12 @@ public class StageSelect_Control : MonoBehaviour
     [SerializeField]
     Text levelName;
 
+    //Arrows
+    [SerializeField]
+    Image leftArrow;
+    [SerializeField]
+    Image rightArrow;
+
     //Star drawing
     [SerializeField]
     Image StarFlips;
@@ -46,16 +52,23 @@ public class StageSelect_Control : MonoBehaviour
     [SerializeField]
     Image StarCollectable;
 
+    //Sprites for sprite swaps
     [SerializeField]
     Sprite[] StarGraphics;
+    [SerializeField]
+    Sprite sprPadlock;
+    [SerializeField]
+    Sprite sprRArrow;
 
     //Scrolling options
+    [SerializeField]
+    float slideSpeed;
     int currentIndex;
     int lastIndex;
     int nextIndex;
 
     private void Start()
-    {
+    { 
         //Load Levels into Stage Select
         levels = new List<IconData>();
         for (int i = 0; i < Stage_Data.GetNumberOfStages(); i++)
@@ -84,11 +97,13 @@ public class StageSelect_Control : MonoBehaviour
 
         levelName.text = levels[currentIndex].stageName;
         UpdateIcon();
+        UpdateArrows();
         UpdateStars();
     }
 
     private void Update()
     {
+        UpdateIcon();
         UpdateSelection();
         Selection();
     }
@@ -97,17 +112,25 @@ public class StageSelect_Control : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
-            currentIndex += 1;
-            levelName.text = levels[currentIndex].stageName;
-            UpdateIcon();
-            UpdateStars();
+            //check if next stage is unlocked
+            if (currentIndex < Stage_Data.GetProgress())
+            {
+                currentIndex += 1;
+                levelName.text = levels[currentIndex].stageName;
+                UpdateArrows();
+                UpdateStars();
+            }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
-            currentIndex -= 1;
-            levelName.text = levels[currentIndex].stageName;
-            UpdateIcon();
-            UpdateStars();
+            //make sure not at start of list
+            if (currentIndex != 0)
+            {
+                currentIndex -= 1;
+                levelName.text = levels[currentIndex].stageName;
+                UpdateArrows();
+                UpdateStars();
+            }
         }
     }
 
@@ -116,14 +139,59 @@ public class StageSelect_Control : MonoBehaviour
         lastIndex = currentIndex - 1;
         nextIndex = currentIndex + 1;
 
-        levelIcons[currentIndex].rectTransform.anchoredPosition = new Vector2(0f, 0f);
+        if (levelIcons[currentIndex].rectTransform.anchoredPosition != new Vector2(0f, 0f))
+        {
+            if (levelIcons[currentIndex].rectTransform.anchoredPosition.x < 0f)
+            {
+                levelIcons[currentIndex].rectTransform.anchoredPosition += new Vector2(slideSpeed * Time.deltaTime, 0f);
+            }
+            if (levelIcons[currentIndex].rectTransform.anchoredPosition.x > 0f)
+            {
+                levelIcons[currentIndex].rectTransform.anchoredPosition -= new Vector2(slideSpeed * Time.deltaTime, 0f);
+            }
+        }
+
+        //Move Last Index
         if (lastIndex >= 0)
         {
-            levelIcons[lastIndex].rectTransform.anchoredPosition = new Vector2(-650f, 0f);
+            if (levelIcons[lastIndex].rectTransform.anchoredPosition != new Vector2(-650f, 0f))
+            {
+                if (levelIcons[lastIndex].rectTransform.anchoredPosition.x < -650f)
+                {
+                    levelIcons[lastIndex].rectTransform.anchoredPosition += new Vector2(slideSpeed * Time.deltaTime, 0f);
+                }
+                if (levelIcons[lastIndex].rectTransform.anchoredPosition.x > -650f)
+                {
+                    levelIcons[lastIndex].rectTransform.anchoredPosition -= new Vector2(slideSpeed * Time.deltaTime, 0f);
+                }
+            }
+            if (lastIndex > 0)
+            {
+                for (int i = 0; i < lastIndex; i++)
+                {
+                    levelIcons[i].rectTransform.anchoredPosition = new Vector2(levelIcons[lastIndex].rectTransform.anchoredPosition.x - (i * -650f), 0f);
+                }
+            }
         }
+
         if (nextIndex < levelIcons.Count)
         {
-            levelIcons[nextIndex].rectTransform.anchoredPosition = new Vector2(650f, 0f);
+            if (levelIcons[nextIndex].rectTransform.anchoredPosition != new Vector2(650f, 0f))
+            {
+                if (levelIcons[nextIndex].rectTransform.anchoredPosition.x < 650f)
+                {
+                    levelIcons[nextIndex].rectTransform.anchoredPosition += new Vector2(slideSpeed * Time.deltaTime, 0f);
+                }
+                if (levelIcons[nextIndex].rectTransform.anchoredPosition.x > 650f)
+                {
+                    levelIcons[nextIndex].rectTransform.anchoredPosition -= new Vector2(slideSpeed * Time.deltaTime, 0f);
+                }
+            }
+
+            for (int i = nextIndex + 1; i < levelIcons.Count; i++)
+            {
+                levelIcons[i].rectTransform.anchoredPosition = new Vector2(levelIcons[nextIndex].rectTransform.anchoredPosition.x + (i * 650f), 0f);
+            }
         }
     }
 
@@ -155,6 +223,37 @@ public class StageSelect_Control : MonoBehaviour
         else
         {
             StarCollectable.sprite = StarGraphics[0];
+        }
+    }
+
+    void UpdateArrows()
+    {
+        //Left Arrow
+        if (currentIndex != 0)
+        {
+            leftArrow.gameObject.SetActive(true);
+        }
+        else
+        {
+            leftArrow.gameObject.SetActive(false);
+        }
+
+        //Right Arrow
+        if (currentIndex < levels.Count-1)
+        {
+            rightArrow.gameObject.SetActive(true);
+            if (currentIndex == Stage_Data.GetProgress())
+            {
+                rightArrow.sprite = sprPadlock;
+            }
+            else
+            {
+                rightArrow.sprite = sprRArrow;
+            }
+        }
+        else
+        {
+            rightArrow.gameObject.SetActive(false);
         }
     }
 
