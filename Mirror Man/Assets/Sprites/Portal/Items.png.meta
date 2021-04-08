@@ -4,10 +4,10 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 8033092973025764044
-    second: Null_Square
+    second: Items_0
   - first:
-      213: 4337684191699249041
-    second: Spiral_Portal
+      213: 3973551251959822206
+    second: Spiral
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,7 +90,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Null_Square
+      name: Items_0
       rect:
         serializedVersion: 2
         x: 0
@@ -98,20 +98,20 @@ TextureImporter:
         width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4a44e1b1f02ac0469b0a072451626da
+      spriteID: fefc73363115d7d4889c9a1431063fed
       internalID: 8033092973025764044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spiral_Portal
+      name: Spiral
       rect:
         serializedVersion: 2
         x: 66
@@ -119,14 +119,14 @@ TextureImporter:
         width: 125
         height: 126
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44d6ca2331a193c4284b2dc704663e15
-      internalID: 4337684191699249041
+      spriteID: f8dae7afa6b755b4080b2bb74ef94d5b
+      internalID: 3973551251959822206
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1825507c2a5e98649ad9980d318d3d20
+    spriteID: f0f2806ff3c04264181be2e0c4f15eb4
     internalID: 0
     vertices: []
     indices: 
