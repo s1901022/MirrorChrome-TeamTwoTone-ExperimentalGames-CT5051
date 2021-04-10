@@ -50,7 +50,7 @@ public class TitleScreen : MonoBehaviour
                     //Sprite Set
                     Play.sprite     = sPlay[1];
                     Options.sprite  = sOptions[0];
-                    About.sprite    = sOptions[0];
+                    About.sprite    = sAbout[0];
                     Exit.sprite     = sExit[0];
                     if (Selection())
                     {
@@ -66,7 +66,7 @@ public class TitleScreen : MonoBehaviour
                     //Sprite Set
                     Play.sprite = sPlay[0];
                     Options.sprite = sOptions[1];
-                    About.sprite = sOptions[0];
+                    About.sprite = sAbout[0];
                     Exit.sprite = sExit[0];
                     break;
                 }
@@ -78,8 +78,12 @@ public class TitleScreen : MonoBehaviour
                     //Sprite Set
                     Play.sprite = sPlay[0];
                     Options.sprite = sOptions[0];
-                    About.sprite = sOptions[1];
+                    About.sprite = sAbout[1];
                     Exit.sprite = sExit[0];
+                    if (Selection())
+                    {
+                        StartAbout();
+                    }
                     break;
                 }
             case SELECTIONS.EXIT:
@@ -90,15 +94,19 @@ public class TitleScreen : MonoBehaviour
                     //Sprite Set
                     Play.sprite = sPlay[0];
                     Options.sprite = sOptions[0];
-                    About.sprite = sOptions[0];
+                    About.sprite = sAbout[0];
                     Exit.sprite = sExit[1];
+                    if (Selection())
+                    {
+                        StartQuit();
+                    }
                     break;
                 }
             default:
                 //Sprite Set
                 Play.sprite = sPlay[0];
                 Options.sprite = sOptions[0];
-                About.sprite = sOptions[0];
+                About.sprite = sAbout[0];
                 Exit.sprite = sExit[0];
                 break;
         }
@@ -136,6 +144,16 @@ public class TitleScreen : MonoBehaviour
     {
         SaveSystem.LoadSaveData();
         Stage_Loader.LoadSceneSafe("StageSelect");
+    }
+
+    void StartAbout()
+    {
+        Stage_Loader.LoadSceneSafe("About");
+    }
+
+    void StartQuit()
+    {
+        Application.Quit();
     }
 
 }
