@@ -150,55 +150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameStages:
-  - stageNumber: 1
-    stageName: Introduction
-    stageBuildName: _Level01
-    collectableGot: 0
-    bestTime: 0
-    numberOfFlips: 0
-    targetnumberOfFlips: 0
-  - stageNumber: 2
-    stageName: Flips
-    stageBuildName: _Level02
-    collectableGot: 0
-    bestTime: 0
-    numberOfFlips: 0
-    targetnumberOfFlips: 0
-  - stageNumber: 3
-    stageName: Test
-    stageBuildName: _Level03
-    collectableGot: 0
-    bestTime: 0
-    numberOfFlips: 0
-    targetnumberOfFlips: 0
-  - stageNumber: 4
-    stageName: Test
-    stageBuildName: _Level04
-    collectableGot: 0
-    bestTime: 0
-    numberOfFlips: 0
-    targetnumberOfFlips: 0
-  - stageNumber: 5
-    stageName: Test
-    stageBuildName: _Level05
-    collectableGot: 0
-    bestTime: 0
-    numberOfFlips: 0
-    targetnumberOfFlips: 0
-  - stageNumber: 6
-    stageName: Test
-    stageBuildName: _Level06
-    collectableGot: 0
-    bestTime: 0
-    numberOfFlips: 0
-    targetnumberOfFlips: 0
-  - stageNumber: 7
-    stageName: Test
-    stageBuildName: _Level07
-    collectableGot: 0
-    bestTime: 0
-    numberOfFlips: 0
-    targetnumberOfFlips: 0
+  - {fileID: 11400000, guid: 93bd7f4b169068f498ffbf2595354e14, type: 2}
+  - {fileID: 11400000, guid: ed474db0ea0c23148a5d9eb33d3ed33f, type: 2}
+  - {fileID: 11400000, guid: 088a166bf29453b47898c4193070f067, type: 2}
 --- !u!4 &143523966
 Transform:
   m_ObjectHideFlags: 0
