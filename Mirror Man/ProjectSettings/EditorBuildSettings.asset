@@ -16,23 +16,32 @@ EditorBuildSettings:
     guid: 04fd530f490719b438662baa9ac9e4f8
   - enabled: 1
     path: Assets/_Scenes/_TilemapLevels/_Level01.unity
-    guid: 6118b9817dbc6524ea14a79dd338df45
+    guid: 48a23beb15ad2734aaedafb9cc8082ae
   - enabled: 1
     path: Assets/_Scenes/_TilemapLevels/_Level02.unity
-    guid: 414f095a6bfabd8428048513726ff817
+    guid: 3951aaa984d113e4eaa71c76a42f509a
   - enabled: 1
     path: Assets/_Scenes/_TilemapLevels/_Level03.unity
-    guid: 6835114b7c5488b4ba33e489c406f080
+    guid: 3f1e90e51bf75d94c8ab960b88d6eacb
   - enabled: 1
     path: Assets/_Scenes/_TilemapLevels/_Level04.unity
-    guid: 9be16600208566044bdff8451ecb4804
+    guid: 653076c3281efc0489a73f2d281ba62c
   - enabled: 1
     path: Assets/_Scenes/_TilemapLevels/_Level05.unity
-    guid: f1c7e80cf373d8c4e9d042e384ea41e7
+    guid: c05b8beb47eced74c94de794efad4cf5
   - enabled: 1
     path: Assets/_Scenes/_TilemapLevels/_Level06.unity
-    guid: 81e6f08f785aaba4eb3dade7fde3846e
+    guid: 6b93ac862854c2a41937084354a5c61d
   - enabled: 1
     path: Assets/_Scenes/_TilemapLevels/_Level07.unity
-    guid: 1683f5033677e8243a456991a0c84d26
+    guid: 4f6c72ad74f35174aa991337e07fc6ef
+  - enabled: 1
+    path: Assets/_Scenes/_TilemapLevels/_Level08.unity
+    guid: ba47728fd7b672949a1c60d46037401e
+  - enabled: 1
+    path: Assets/_Scenes/_TilemapLevels/_Level09.unity
+    guid: b89bcd7ecf661ff4c9f295ea61e7116b
+  - enabled: 1
+    path: Assets/_Scenes/_TilemapLevels/_Level10.unity
+    guid: 47a14c8cde9ec3044bf4558540178689
   m_configObjects: {}
