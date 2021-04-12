@@ -34,7 +34,7 @@ public static class SaveSystem
         }
     }
 
-    static SaveData SetSaveData()
+    public static SaveData SetSaveData()
     {
         SaveData data = new SaveData();
         data.InitialiseLevelData(Stage_Data.GetNumberOfStages());
@@ -46,5 +46,15 @@ public static class SaveSystem
         }
         data.SetProgress(Stage_Data.GetProgress());
         return data;
+    }
+
+    public static void DeleteSaveData()
+    {
+        string path = Application.persistentDataPath + "/MirrorChromeSave.Dat";
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+        Debug.Log("File Does not exist");
     }
 }
