@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class scrChangeScene : MonoBehaviour
 {
     //public string sceneToLoad;
     private Animator anim;
     [SerializeField] private float transitionTime;
+    [SerializeField]
     GameObject canvas;
+    [SerializeField]
+    Image wipe;
 
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        
+        wipe.color = new Color(wipe.color.r, wipe.color.g, wipe.color.b, 1.0f);
         //transition.SetBool("plsWork", false);
     }
 
@@ -24,7 +28,6 @@ public class scrChangeScene : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-       canvas = GameObject.FindGameObjectWithTag("EndLevelCanvas");
         if (col.gameObject.tag == "Player")
         {
             canvas.GetComponent<LevelClearScript>().isActive = true;
