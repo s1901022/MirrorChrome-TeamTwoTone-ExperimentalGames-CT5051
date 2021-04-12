@@ -11,6 +11,9 @@ public class scrDoor : MonoBehaviour
     private GameObject trigger;
     private scrButton triggerScript;
 
+    [SerializeField]
+    Sprite[] sprites;
+
     void Start()
     {
         //Get Trigger
@@ -25,12 +28,12 @@ public class scrDoor : MonoBehaviour
         if (triggerScript.flag == true)
         {
             rb.enabled = false;
-            spriteRenderer.enabled = false;            
+            spriteRenderer.sprite = sprites[1];          
         }
         else
         {
             rb.enabled = true;
-            spriteRenderer.enabled = true;
+            spriteRenderer.sprite = sprites[0];
         }
     }
 }

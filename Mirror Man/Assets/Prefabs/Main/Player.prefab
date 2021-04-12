@@ -150,7 +150,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 256
-  checkRadius: -0.5
+  checkRadius: 1
   C_Offset: 0
   isSplit: 0
   physicsType: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   jumpForce: 8
   grounded: 0
   groundCheck: {fileID: 0}
-  checkRadius: 0.5
+  checkRadius: 1
   ground:
     serializedVersion: 2
     m_Bits: 256

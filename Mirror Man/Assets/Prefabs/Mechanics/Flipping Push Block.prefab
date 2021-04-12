@@ -72,12 +72,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 25d457475106db14cb73bb894f665ee7, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.9643793, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a0b66f44fc09cc243949cb9154c70d36, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,14 +100,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.5}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
 --- !u!50 &6799874536094621075
 Rigidbody2D:
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a58ee32e250904eb9dc699e955da76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControl: {fileID: 0}
   groundC: {fileID: 6836171069745619055, guid: 3505f40f50b0219439b1610a7081bb87, type: 3}
   ground:
     serializedVersion: 2
@@ -162,4 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1376601582f0085488edff0b6562f376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkFlip: 0
   m_grounded: 0
+  m_canFlip: 0
+  initialFlipDirection: 1
+  m_sprites:
+  - {fileID: 21300000, guid: a0b66f44fc09cc243949cb9154c70d36, type: 3}
+  - {fileID: 21300000, guid: 4ef19a5777c3621499aa48e84cba6541, type: 3}
