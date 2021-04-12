@@ -38,7 +38,8 @@ public class scrPlayerMovement : MonoBehaviour
         Idle,
         Running,
         Jumping,
-        Pushing
+        Pushing,
+        Falling,
     };
 
     private Animator anim;
@@ -98,6 +99,18 @@ public class scrPlayerMovement : MonoBehaviour
 
         if (animState == AnimationStates.Jumping) 
         {
+            
+             if (Mathf.Abs(rb.velocity.y) < .1f)
+            {
+                animState = AnimationStates.Falling;
+            }
+            else if (m_entity.GetGrounded())
+            {
+                animState = AnimationStates.Idle;
+            }
+        }
+        else if (animState == AnimationStates.Falling)
+        {
             if (m_entity.GetGrounded())
             {
                 animState = AnimationStates.Idle;
@@ -105,9 +118,11 @@ public class scrPlayerMovement : MonoBehaviour
         }
         else if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon) {
             // Going right
-            animState = AnimationStates.Running;
-        } else {
-            animState = AnimationStates.Idle;
+            animState = AnimationStates.Running; 
+        }
+
+        else {
+            animState = AnimationStates.Falling;
         }
     }
 
