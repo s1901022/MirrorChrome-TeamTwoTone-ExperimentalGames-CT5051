@@ -53961,6 +53961,12 @@ PrefabInstance:
       propertyPath: jumps
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1466356360709853463, guid: fd067a6d81c515849b2b60b00f6a8e79,
+        type: 3}
+      propertyPath: stageData
+      value: 
+      objectReference: {fileID: 11400000, guid: 93bd7f4b169068f498ffbf2595354e14,
+        type: 2}
     - target: {fileID: 1466356361487925768, guid: fd067a6d81c515849b2b60b00f6a8e79,
         type: 3}
       propertyPath: m_AnchoredPosition.x

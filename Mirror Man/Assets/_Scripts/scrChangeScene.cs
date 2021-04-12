@@ -40,9 +40,7 @@ public class scrChangeScene : MonoBehaviour
 
         //Real time used as time is paused in the end screen menu
         yield return new WaitForSecondsRealtime(transitionTime);
-        
-        print("HAH NOPE");
-            
+                    
         Stage_Loader.LoadSceneSafe(sceneToLoad);
     }
 }

@@ -13,7 +13,9 @@ public class StageData : ScriptableObject
 
     public float targetTime;
     public int targetnumberOfFlips;
+    public int targetJumps;
 
+    public int numberOfJumps;
     public int numberOfFlips;
     public bool collectableGot;
     public float bestTime;
