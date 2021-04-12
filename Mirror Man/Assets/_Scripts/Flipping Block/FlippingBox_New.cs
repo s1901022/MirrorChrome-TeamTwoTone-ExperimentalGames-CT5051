@@ -15,6 +15,9 @@ public class FlippingBox_New : MonoBehaviour
 
     public float initialFlipDirection = 1;
 
+    [SerializeField]
+    Sprite[] m_sprites;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -66,10 +69,12 @@ public class FlippingBox_New : MonoBehaviour
         if (transform.position.y > reflectNormal.position.y)
         {
             transform.position = new Vector3(transform.position.x, (distanceBetweenReflection - reflectNormal.position.y) * -1, transform.position.z);
+            GetComponent<SpriteRenderer>().sprite = m_sprites[0];
         }
         else if (transform.position.y < reflectNormal.position.y)
         {
             transform.position = new Vector3(transform.position.x, (distanceBetweenReflection - reflectNormal.position.y) * -1, transform.position.z);
+            GetComponent<SpriteRenderer>().sprite = m_sprites[1];
         }
         checkFlip *= -1;
         rb.gravityScale *= -1;
