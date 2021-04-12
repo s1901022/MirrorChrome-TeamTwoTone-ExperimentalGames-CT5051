@@ -7,10 +7,13 @@ public class scrButton : MonoBehaviour
     public bool flag;
     public bool flagDefault;
     public bool alwaysSet;
+
+    [SerializeField]
+    Sprite[] sprites;
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -24,6 +27,7 @@ public class scrButton : MonoBehaviour
         //Handle Death and respawning
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "Entity")
         {
+            GetComponent<SpriteRenderer>().sprite = sprites[1];
             if (flag == flagDefault)
             {
                 flag = !flag;
@@ -34,6 +38,7 @@ public class scrButton : MonoBehaviour
     {
         if (alwaysSet == false)
         {
+            GetComponent<SpriteRenderer>().sprite = sprites[0];
             flag = flagDefault;
         }
     }
