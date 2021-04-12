@@ -140,8 +140,15 @@ public class scrSwitchGravity : MonoBehaviour
         }
         else if (m_entity.GetGrounded() == false)
         {
+            //Might remove this line as it may be responsible for a visual bug
             playerReflection.SetActive(false);
         }
+        else
+        {
+            //Fixes the issue of the reflection being visible until first encounter with refelct solids
+            playerReflection.SetActive(false);
+        }
+            
         playerReflection.transform.localScale = transform.localScale;
     }
 

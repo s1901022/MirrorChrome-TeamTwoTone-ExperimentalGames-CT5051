@@ -68,6 +68,10 @@ public class TitleScreen : MonoBehaviour
                     Options.sprite = sOptions[1];
                     About.sprite = sAbout[0];
                     Exit.sprite = sExit[0];
+                    if (Selection())
+                    {
+                        StartOptions();
+                    }
                     break;
                 }
             case SELECTIONS.ABOUT:
@@ -154,6 +158,11 @@ public class TitleScreen : MonoBehaviour
     void StartQuit()
     {
         Application.Quit();
+    }
+
+    void StartOptions()
+    {
+        Stage_Loader.LoadSceneSafe("Options");
     }
 
 }

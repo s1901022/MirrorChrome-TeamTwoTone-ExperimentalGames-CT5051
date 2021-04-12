@@ -77,6 +77,7 @@ public class StageSelect_Control : MonoBehaviour
             levels.Add(new IconData());
             levels[i].SetData(Stage_Data.GetStageNumber(j), Stage_Data.GetStageName(j), Stage_Data.GetIconSprite(j), Stage_Data.GetTargetTime(j), Stage_Data.GetBestTime(j), Stage_Data.GetTargetFlips(j), Stage_Data.GetFlips(j), Stage_Data.GetCollectableBool(j));
             levelIcons[i].sprite = levels[i].stageSelectIcon;
+            levelIcons[i].rectTransform.anchoredPosition = new Vector2(i * 650f, levelIcons[i].rectTransform.anchoredPosition.y);
             Debug.LogError("Success");
         }
 
@@ -139,58 +140,75 @@ public class StageSelect_Control : MonoBehaviour
         lastIndex = currentIndex - 1;
         nextIndex = currentIndex + 1;
 
-        if (levelIcons[currentIndex].rectTransform.anchoredPosition != new Vector2(0f, 0f))
-        {
-            if (levelIcons[currentIndex].rectTransform.anchoredPosition.x < 0f)
-            {
-                levelIcons[currentIndex].rectTransform.anchoredPosition += new Vector2(slideSpeed * Time.deltaTime, 0f);
-            }
-            if (levelIcons[currentIndex].rectTransform.anchoredPosition.x > 0f)
-            {
-                levelIcons[currentIndex].rectTransform.anchoredPosition -= new Vector2(slideSpeed * Time.deltaTime, 0f);
-            }
-        }
-
-        //Move Last Index
         if (lastIndex >= 0)
         {
-            if (levelIcons[lastIndex].rectTransform.anchoredPosition != new Vector2(-650f, 0f))
+            if (Mathf.Round(levelIcons[lastIndex].rectTransform.anchoredPosition.x) > -650f)
             {
                 if (levelIcons[lastIndex].rectTransform.anchoredPosition.x < -650f)
                 {
-                    levelIcons[lastIndex].rectTransform.anchoredPosition += new Vector2(slideSpeed * Time.deltaTime, 0f);
+                    levelIcons[lastIndex].rectTransform.anchoredPosition += new Vector2(Mathf.Round(slideSpeed * Time.deltaTime), 0f);
                 }
-                if (levelIcons[lastIndex].rectTransform.anchoredPosition.x > -650f)
+                else if (levelIcons[lastIndex].rectTransform.anchoredPosition.x > -650f)
                 {
-                    levelIcons[lastIndex].rectTransform.anchoredPosition -= new Vector2(slideSpeed * Time.deltaTime, 0f);
+                    levelIcons[lastIndex].rectTransform.anchoredPosition -= new Vector2(Mathf.Round(slideSpeed * Time.deltaTime), 0f);
                 }
             }
-            if (lastIndex > 0)
+            else
             {
-                for (int i = 0; i < lastIndex; i++)
-                {
-                    levelIcons[i].rectTransform.anchoredPosition = new Vector2(levelIcons[lastIndex].rectTransform.anchoredPosition.x - (i * -650f), 0f);
-                }
+                levelIcons[lastIndex].rectTransform.anchoredPosition = new Vector2(-650f, levelIcons[lastIndex].rectTransform.anchoredPosition.y);
+            }
+
+            int j = 0;
+            for (int i = lastIndex-1; i >= 0; i--)
+            {
+                j++;
+                levelIcons[i].rectTransform.anchoredPosition = new Vector2(levelIcons[lastIndex].rectTransform.anchoredPosition.x - (j * 650), levelIcons[lastIndex].rectTransform.anchoredPosition.y);
             }
         }
-
-        if (nextIndex < levelIcons.Count)
+        if (Mathf.Round(levelIcons[currentIndex].rectTransform.anchoredPosition.x) != 0f)
         {
-            if (levelIcons[nextIndex].rectTransform.anchoredPosition != new Vector2(650f, 0f))
+            if (levelIcons[currentIndex].rectTransform.anchoredPosition.x < 0f)
+            {
+                levelIcons[currentIndex].rectTransform.anchoredPosition += new Vector2(Mathf.Round(slideSpeed * Time.deltaTime), 0f);
+            }
+            else if (levelIcons[currentIndex].rectTransform.anchoredPosition.x > 0f)
+            {
+                levelIcons[currentIndex].rectTransform.anchoredPosition -= new Vector2(Mathf.Round(slideSpeed * Time.deltaTime), 0f);
+            }
+
+            if (levelIcons[currentIndex].rectTransform.anchoredPosition.x <= 20f && levelIcons[currentIndex].rectTransform.anchoredPosition.x >= -20f)
+            {
+                levelIcons[currentIndex].rectTransform.anchoredPosition = new Vector2(0f, levelIcons[currentIndex].rectTransform.anchoredPosition.y);
+            }
+        }
+        else
+        {
+            levelIcons[currentIndex].rectTransform.anchoredPosition = new Vector2(0f, levelIcons[currentIndex].rectTransform.anchoredPosition.y);
+        }
+
+        if (nextIndex < levels.Count)
+        {
+            if (Mathf.Round(levelIcons[nextIndex].rectTransform.anchoredPosition.x) < 650f)
             {
                 if (levelIcons[nextIndex].rectTransform.anchoredPosition.x < 650f)
                 {
-                    levelIcons[nextIndex].rectTransform.anchoredPosition += new Vector2(slideSpeed * Time.deltaTime, 0f);
+                    levelIcons[nextIndex].rectTransform.anchoredPosition += new Vector2(Mathf.Round(slideSpeed * Time.deltaTime), 0f);
                 }
-                if (levelIcons[nextIndex].rectTransform.anchoredPosition.x > 650f)
+                else if (levelIcons[nextIndex].rectTransform.anchoredPosition.x > 650f)
                 {
-                    levelIcons[nextIndex].rectTransform.anchoredPosition -= new Vector2(slideSpeed * Time.deltaTime, 0f);
+                    levelIcons[nextIndex].rectTransform.anchoredPosition -= new Vector2(Mathf.Round(slideSpeed * Time.deltaTime), 0f);
                 }
             }
-
-            for (int i = nextIndex + 1; i < levelIcons.Count; i++)
+            else
             {
-                levelIcons[i].rectTransform.anchoredPosition = new Vector2(levelIcons[nextIndex].rectTransform.anchoredPosition.x + (i * 650f), 0f);
+               levelIcons[nextIndex].rectTransform.anchoredPosition = new Vector2(650f, levelIcons[nextIndex].rectTransform.anchoredPosition.y);
+            }
+
+            int j = 0;
+            for (int i = nextIndex + 1; i < levels.Count; i++)
+            {
+                j++;
+                levelIcons[i].rectTransform.anchoredPosition = new Vector2(levelIcons[nextIndex].rectTransform.anchoredPosition.x + (j * 650), levelIcons[nextIndex].rectTransform.anchoredPosition.y);
             }
         }
     }
