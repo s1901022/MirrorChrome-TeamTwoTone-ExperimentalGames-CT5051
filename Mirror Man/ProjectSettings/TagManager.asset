@@ -18,6 +18,8 @@ TagManager:
   - BarrierTop
   - BarrierLeft
   - BarrierRight
+  - EndLevelCanvas
+  - Transitions
   layers:
   - Default
   - TransparentFX
