@@ -81,6 +81,7 @@ public class scrPlayerMovement : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && m_entity.GetGrounded())
             {
+                m_entity.GetAudioManager().PlayAudio(0, "Jump");
                 animState = AnimationStates.Jumping;
                 rb.velocity = Vector2.up * jumpForce;
                 Debug.Log("JUMPING");
@@ -106,6 +107,8 @@ public class scrPlayerMovement : MonoBehaviour
         else if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon) {
             // Going right
             animState = AnimationStates.Running;
+            if (m_entity.GetGrounded()) { m_entity.GetAudioManager().PlayAudio(0, "FootStep"); }
+           
         } else {
             animState = AnimationStates.Idle;
         }
