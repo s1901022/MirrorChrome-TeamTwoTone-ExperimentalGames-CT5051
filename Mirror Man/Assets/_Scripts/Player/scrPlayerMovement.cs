@@ -10,6 +10,9 @@ public class scrPlayerMovement : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
     [SerializeField]
+    private float minJumpForce;
+    [SerializeField]
+    private float MaxjumpForce;
     private float jumpForce;
     private float moveInput;
     private bool facingRight = true;
@@ -57,35 +60,32 @@ public class scrPlayerMovement : MonoBehaviour
         animState = AnimationStates.Idle;
     }
 
-    void FixedUpdate()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (!m_entity.GetDead())
         {
+
             moveInput = Input.GetAxis("Horizontal");
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
-            if (m_entity.GetGrounded())
+            if (m_entity.GetGrounded() && rb.velocity.y == 0f)
             {
+                jumpForce = 0f;
                 extraJumps = jumplimit;
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)
+            if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && m_entity.GetGrounded() && rb.velocity.y == 0f)
             {
-                rb.velocity = Vector2.up * jumpForce;
-                extraJumps--;
-            }
-            else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && m_entity.GetGrounded())
-            {
-                m_entity.GetAudioManager().PlayAudio(0, "Jump");
+                rb.velocity += Vector2.up * MaxjumpForce;
                 animState = AnimationStates.Jumping;
-                rb.velocity = Vector2.up * jumpForce;
+                extraJumps--;
                 Debug.Log("JUMPING");
             }
+            else if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Lerp(rb.velocity.y, 0f, 0f));
+            }
+
             anim.SetInteger("state", (int)animState);
             StateSwitch();
         }
@@ -99,6 +99,7 @@ public class scrPlayerMovement : MonoBehaviour
 
         if (animState == AnimationStates.Jumping) 
         {
+
             if (m_entity.GetGrounded())
             {
                 animState = AnimationStates.Idle;
@@ -108,7 +109,7 @@ public class scrPlayerMovement : MonoBehaviour
             // Going right
             animState = AnimationStates.Running;
             if (m_entity.GetGrounded()) { m_entity.GetAudioManager().PlayAudio(0, "FootStep"); }
-           
+
         } else {
             animState = AnimationStates.Idle;
         }
@@ -140,9 +141,13 @@ public class scrPlayerMovement : MonoBehaviour
     }
 
     //Getters
-    public float GetJumpForce() { return jumpForce; }
+    public float GetJumpForce() { return MaxjumpForce; }
     public bool GetDirection() { return facingRight; }
     //Setters
-    public void FlipJumpGrav() { jumpForce = jumpForce * -1; }
+    public void FlipJumpGrav() 
+    {
+        minJumpForce = minJumpForce * -1;
+        MaxjumpForce = MaxjumpForce * -1; 
+    }
     public void SetDirection(bool a_isRightFace) { facingRight = a_isRightFace; }
 }

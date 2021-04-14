@@ -34,4 +34,9 @@ public class AudioManager : MonoBehaviour
         }
         return false;
     }
+
+    public void StopAudio()
+    {
+        GetComponent<AudioSource>().Stop();
+    }
 }
