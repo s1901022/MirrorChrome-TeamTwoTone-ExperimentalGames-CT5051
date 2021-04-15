@@ -53479,6 +53479,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Exit Gate (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 479596621678338045, guid: 77a10ad0454fa1348918e8baa5f3e887,
+        type: 3}
+      propertyPath: sceneToLoad
+      value: _Level06
+      objectReference: {fileID: 0}
     - target: {fileID: 479596621678338035, guid: 77a10ad0454fa1348918e8baa5f3e887,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -53538,13 +53543,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 479596621678338045, guid: 77a10ad0454fa1348918e8baa5f3e887,
-        type: 3}
-      propertyPath: sceneToLoad
-      value: _Level06
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77a10ad0454fa1348918e8baa5f3e887, type: 3}
+--- !u!114 &1164330820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 479596621678338045, guid: 77a10ad0454fa1348918e8baa5f3e887,
+    type: 3}
+  m_PrefabInstance: {fileID: 1164330819}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acaf9a86218482d4aa97715a2521a2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1241959676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53804,16 +53816,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage Control
       objectReference: {fileID: 0}
-    - target: {fileID: 830217611466288310, guid: d9a6fbc1e5101db49acb2f4648140e75,
-        type: 3}
-      propertyPath: normalMap
-      value: 
-      objectReference: {fileID: 1151393443}
-    - target: {fileID: 830217611466288310, guid: d9a6fbc1e5101db49acb2f4648140e75,
-        type: 3}
-      propertyPath: invertedMap
-      value: 
-      objectReference: {fileID: 1019327024}
     - target: {fileID: 830217611466288311, guid: d9a6fbc1e5101db49acb2f4648140e75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -53869,6 +53871,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 830217611466288310, guid: d9a6fbc1e5101db49acb2f4648140e75,
+        type: 3}
+      propertyPath: normalMap
+      value: 
+      objectReference: {fileID: 1151393443}
+    - target: {fileID: 830217611466288310, guid: d9a6fbc1e5101db49acb2f4648140e75,
+        type: 3}
+      propertyPath: invertedMap
+      value: 
+      objectReference: {fileID: 1019327024}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9a6fbc1e5101db49acb2f4648140e75, type: 3}
 --- !u!114 &1467359073 stripped
@@ -54671,7 +54683,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1164330820}
     - target: {fileID: 1466356359580615482, guid: fd067a6d81c515849b2b60b00f6a8e79,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -54683,6 +54695,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0913274fb184acb49a1724e241adff66,
         type: 2}
+    - target: {fileID: 294872152, guid: fd067a6d81c515849b2b60b00f6a8e79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1164330820}
+    - target: {fileID: 294872152, guid: fd067a6d81c515849b2b60b00f6a8e79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Replay
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984134401, guid: fd067a6d81c515849b2b60b00f6a8e79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1164330820}
+    - target: {fileID: 1984134401, guid: fd067a6d81c515849b2b60b00f6a8e79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd067a6d81c515849b2b60b00f6a8e79, type: 3}
 --- !u!1001 &2015564336

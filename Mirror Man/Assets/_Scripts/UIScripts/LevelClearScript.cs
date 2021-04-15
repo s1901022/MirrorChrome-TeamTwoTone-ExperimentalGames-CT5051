@@ -83,6 +83,7 @@ public class LevelClearScript : MonoBehaviour {
 					// set the timer anyway
 					stageData.bestTime = timer;
 				}
+
 				// check the jump data against how many jumps the player has done
 				if (stageData.targetJumps >= jumpCounter) {
 					// if the number of jumps is equal to or less then the recomended
