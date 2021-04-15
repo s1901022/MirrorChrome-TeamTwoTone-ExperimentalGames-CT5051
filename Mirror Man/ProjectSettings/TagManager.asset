@@ -20,6 +20,7 @@ TagManager:
   - BarrierRight
   - EndLevelCanvas
   - Transitions
+  - LEG
   layers:
   - Default
   - TransparentFX

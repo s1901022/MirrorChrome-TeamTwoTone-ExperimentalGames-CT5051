@@ -1439,12 +1439,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Load
       objectReference: {fileID: 0}
-    - target: {fileID: 1466356360709853463, guid: fd067a6d81c515849b2b60b00f6a8e79,
-        type: 3}
-      propertyPath: stageData
-      value: 
-      objectReference: {fileID: 11400000, guid: 1bbb2a8f787daa54c82cd4b0c0d2489b,
-        type: 2}
     - target: {fileID: 294872152, guid: fd067a6d81c515849b2b60b00f6a8e79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1461,6 +1455,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 1466356360709853463, guid: fd067a6d81c515849b2b60b00f6a8e79,
+        type: 3}
+      propertyPath: stageData
+      value: 
+      objectReference: {fileID: 11400000, guid: 1bbb2a8f787daa54c82cd4b0c0d2489b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd067a6d81c515849b2b60b00f6a8e79, type: 3}
 --- !u!1001 &526292526
@@ -57087,7 +57087,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.183105
+  orthographic size: 7.383186
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -57111,7 +57111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890800171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -10}
+  m_LocalPosition: {x: -1.51, y: 0.77, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

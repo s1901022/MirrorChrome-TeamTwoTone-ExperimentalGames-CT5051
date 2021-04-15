@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 479596621678338033}
   m_Layer: 0
   m_Name: Level Exit Gate
-  m_TagString: Untagged
+  m_TagString: LEG
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -452,7 +452,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acaf9a86218482d4aa97715a2521a2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisScene: 
+  sceneToLoad: 
   transitionTime: 2
+  canvas: {fileID: 0}
+  wipe: {fileID: 0}
 --- !u!61 &479596621678338032
 BoxCollider2D:
   m_ObjectHideFlags: 0
