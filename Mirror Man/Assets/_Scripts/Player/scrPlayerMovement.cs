@@ -37,11 +37,14 @@ public class scrPlayerMovement : MonoBehaviour {
 		Idle,
 		Running,
 		Jumping,
+		Falling,
 		Pushing
 	};
 	// creating an object of the animator and the animation states enum
 	private Animator anim;
 	private AnimationStates animState;
+
+	GameObject pushingBlock;
 
 
 	// Start is called before the first frame update
@@ -55,6 +58,7 @@ public class scrPlayerMovement : MonoBehaviour {
 		anim = GetComponent<Animator>();
 		// at the start of the level, set the animation state to idle
 		animState = AnimationStates.Idle;
+		pushingBlock = FindObjectOfType<FlippingBox_New>().gameObject;
 	}
 
 	void FixedUpdate() {
@@ -92,15 +96,27 @@ public class scrPlayerMovement : MonoBehaviour {
 		}
 		// if the player is jumping
 		if (animState == AnimationStates.Jumping) {
+			// if the player is starting to fall
+			if (gameObject.GetComponent<Rigidbody2D>().velocity.y < 0) {
+				// set the animation state to falling
+				animState = AnimationStates.Falling;
+			}
+
+		} else if (animState == AnimationStates.Falling) {
 			// and the player is grounded
 			if (m_entity.GetGrounded()) {
-				// set the animation state to idle
 				animState = AnimationStates.Idle;
 			}
-		} else if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon) {
+		} else if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon && pushingBlock.GetComponent<FlippingBox_New>().GetMoving() == false) {
 			// if the players velocity is above epsilon (the smallest possible number)
+			// and the player is not pushing a block
 			// set the animation state to running
 			animState = AnimationStates.Running;
+
+		} else if (pushingBlock.GetComponent<FlippingBox_New>().GetMoving() == true) {
+			// if the block is moving
+			// set the state to pushing
+			animState = AnimationStates.Pushing;
 		} else {
 			// else if the player is doing nothing
 			// set the animation state to idle
