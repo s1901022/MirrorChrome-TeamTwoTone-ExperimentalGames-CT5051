@@ -107,16 +107,17 @@ public class scrPlayerMovement : MonoBehaviour {
 			if (m_entity.GetGrounded()) {
 				animState = AnimationStates.Idle;
 			}
-		} else if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon && pushingBlock.GetComponent<FlippingBox_New>().GetMoving() == false) {
+		} else if (pushingBlock != null && pushingBlock.GetComponent<FlippingBox_New>().GetMoving() == true) {
+			// if the block is moving
+			// set the state to pushing
+			animState = AnimationStates.Pushing;
+
+		} else if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon) {
 			// if the players velocity is above epsilon (the smallest possible number)
 			// and the player is not pushing a block
 			// set the animation state to running
 			animState = AnimationStates.Running;
 
-		} else if (pushingBlock.GetComponent<FlippingBox_New>().GetMoving() == true) {
-			// if the block is moving
-			// set the state to pushing
-			animState = AnimationStates.Pushing;
 		} else {
 			// else if the player is doing nothing
 			// set the animation state to idle
