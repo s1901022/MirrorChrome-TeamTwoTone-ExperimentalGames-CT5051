@@ -51,7 +51,7 @@ public class scrSwitchGravity : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && canFlip)
         {
-            MirrorPlayer();  
+            MirrorPlayer();
         }
         UpdateReflection();
     }
@@ -85,6 +85,9 @@ public class scrSwitchGravity : MonoBehaviour
 
         if (hitReflective.collider != null && hitReflective.collider.tag == "Reflective")
         {
+            //Play Sound effect
+            m_entity.GetAudioManager().PlayAudio(0, "Flip");
+
             float distanceBetweenReflection = transform.position.y - reflectNormal.position.y;
             float reflectiveScale = reflectNormal.localScale.y / 2;
 
@@ -125,7 +128,12 @@ public class scrSwitchGravity : MonoBehaviour
         DetectTerrain();
         if (hitReflective.collider != null && hitReflective.collider.tag == "Reflective")
         {
+            //Update sprites for Reflection
             playerReflection.SetActive(true);
+            playerReflection.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
+            playerReflection.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * -1, playerReflection.transform.localScale.z);
+            playerReflection.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+
             float distanceBetweenReflection = transform.position.y - reflectNormal.position.y;
             float reflectiveScale = reflectNormal.localScale.y/2;
 
@@ -149,7 +157,7 @@ public class scrSwitchGravity : MonoBehaviour
             playerReflection.SetActive(false);
         }
             
-        playerReflection.transform.localScale = transform.localScale;
+        //playerReflection.transform.localScale = transform.localScale;
     }
 
     void Rotation()

@@ -126,5 +126,6 @@ public class scrEntity : MonoBehaviour
     public bool GetDead() { return m_dead; }
     public void SetDead() { m_dead = !m_dead; }
 
+    public AudioManager GetAudioManager() { return gameControl.GetComponent<AudioManager>(); }
     public StageState GetGameControlScript() { return gameControl; }
 }

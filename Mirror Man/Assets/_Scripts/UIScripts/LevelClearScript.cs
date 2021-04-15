@@ -25,6 +25,8 @@ public class LevelClearScript : MonoBehaviour {
 	[SerializeField]
 	Sprite completedStar;
 
+	[SerializeField] StageData stageData;
+
 	// Start is called before the first frame update
 	void Start() {
 		// Make time equal to 1 at the start
@@ -39,10 +41,10 @@ public class LevelClearScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 
-		if (Input.GetKeyDown(KeyCode.UpArrow)) {
+		if (Input.GetKeyDown(KeyCode.UpArrow) && Time.timeScale == 1) {
 			jumpCounter++;
 		}
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale == 1) {
 			flipCounter++;
 		}
 		timer += Time.deltaTime;
@@ -56,15 +58,28 @@ public class LevelClearScript : MonoBehaviour {
 				// set each objects activity to true
 				item.SetActive(true);
 
-				if (flips >= flipCounter) {
+				if (stageData.targetnumberOfFlips >= flipCounter) {
 					LevelClearObjects[0].GetComponent<RawImage>().texture = completedStar.texture;
+					stageData.numberOfFlips = flipCounter;
+				} else if (stageData.numberOfFlips == 0) {
+					stageData.numberOfFlips = flipCounter;
 				}
-				if (time >= timer) {
+
+				if (stageData.targetTime >= timer) {
 					LevelClearObjects[1].GetComponent<RawImage>().texture = completedStar.texture;
+					stageData.bestTime = timer;
+				} else if (stageData.bestTime == 0) {
+					stageData.bestTime = timer;
 				}
-				if (jumps >= jumpCounter) {
+
+				if (stageData.targetJumps >= jumpCounter) {
 					LevelClearObjects[2].GetComponent<RawImage>().texture = completedStar.texture;
+					stageData.numberOfJumps = jumpCounter;
+				} else if (stageData.numberOfJumps == 0) {
+					stageData.numberOfJumps = jumpCounter;
 				}
+
+				SaveSystem.SaveGameData();
 			}
 		}
 	}

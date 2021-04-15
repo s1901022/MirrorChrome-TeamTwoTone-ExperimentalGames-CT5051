@@ -38,8 +38,7 @@ public class scrPlayerMovement : MonoBehaviour
         Idle,
         Running,
         Jumping,
-        Pushing,
-        Falling,
+        Pushing
     };
 
     private Animator anim;
@@ -82,6 +81,7 @@ public class scrPlayerMovement : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && m_entity.GetGrounded())
             {
+                m_entity.GetAudioManager().PlayAudio(0, "Jump");
                 animState = AnimationStates.Jumping;
                 rb.velocity = Vector2.up * jumpForce;
                 Debug.Log("JUMPING");
@@ -99,18 +99,6 @@ public class scrPlayerMovement : MonoBehaviour
 
         if (animState == AnimationStates.Jumping) 
         {
-            
-             if (Mathf.Abs(rb.velocity.y) < .1f)
-            {
-                animState = AnimationStates.Falling;
-            }
-            else if (m_entity.GetGrounded())
-            {
-                animState = AnimationStates.Idle;
-            }
-        }
-        else if (animState == AnimationStates.Falling)
-        {
             if (m_entity.GetGrounded())
             {
                 animState = AnimationStates.Idle;
@@ -118,11 +106,11 @@ public class scrPlayerMovement : MonoBehaviour
         }
         else if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon) {
             // Going right
-            animState = AnimationStates.Running; 
-        }
-
-        else {
-            animState = AnimationStates.Falling;
+            animState = AnimationStates.Running;
+            if (m_entity.GetGrounded()) { m_entity.GetAudioManager().PlayAudio(0, "FootStep"); }
+           
+        } else {
+            animState = AnimationStates.Idle;
         }
     }
 
