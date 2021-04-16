@@ -58,27 +58,44 @@ public class LevelClearScript : MonoBehaviour {
 				// set each objects activity to true
 				item.SetActive(true);
 
+				// check the flip data against how many flips the player has done
 				if (stageData.targetnumberOfFlips >= flipCounter) {
+					// if the number of flips is equal to or less then the recomended
+					// turn the star to completed
 					LevelClearObjects[0].GetComponent<RawImage>().texture = completedStar.texture;
+					// set the stage data flip number to the counter
 					stageData.numberOfFlips = flipCounter;
 				} else if (stageData.numberOfFlips == 0) {
+					// if this is the first time playing the level
+					// set the number of flips anyway
 					stageData.numberOfFlips = flipCounter;
 				}
 
+				// check the timer data against how long the player took
 				if (stageData.targetTime >= timer) {
+					// if the time is equal or less thatn the recomended
+					// turn the star to completed
 					LevelClearObjects[1].GetComponent<RawImage>().texture = completedStar.texture;
+					// set the stage data time taken to the timer
 					stageData.bestTime = timer;
 				} else if (stageData.bestTime == 0) {
+					// if this is the first time playing the level
+					// set the timer anyway
 					stageData.bestTime = timer;
 				}
 
+				// check the jump data against how many jumps the player has done
 				if (stageData.targetJumps >= jumpCounter) {
+					// if the number of jumps is equal to or less then the recomended
+					// turn the star to completed
 					LevelClearObjects[2].GetComponent<RawImage>().texture = completedStar.texture;
 					stageData.numberOfJumps = jumpCounter;
 				} else if (stageData.numberOfJumps == 0) {
+					// if this is the first time playing the level
+					// set the number of jumps anyway
 					stageData.numberOfJumps = jumpCounter;
 				}
-
+				// save the stage data
 				SaveSystem.SaveGameData();
 			}
 		}
