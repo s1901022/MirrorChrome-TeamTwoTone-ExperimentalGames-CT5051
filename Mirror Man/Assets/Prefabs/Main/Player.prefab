@@ -168,8 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumplimit: 0
   moveSpeed: 5
-  minJumpForce: 4
-  MaxjumpForce: 8
+  jumpForce: 8
   grounded: 0
   groundCheck: {fileID: 0}
   checkRadius: 1
