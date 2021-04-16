@@ -92,6 +92,11 @@ public class scrEntity : MonoBehaviour
                 Reset();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reset();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -107,11 +112,22 @@ public class scrEntity : MonoBehaviour
     {
         rb.velocity = new Vector3(0f, 0f, 0f);
         transform.position = initialPosition;
+        var flipPlayer = GetComponent<scrSwitchGravity>();
+        if (flipPlayer != null)
+        {
+            flipPlayer.Reset();
+            flipPlayer.ResetRotation();
+        }
         var flippableEntity = GetComponent<scrObjectFlip>();
         if (flippableEntity != null)
         {
             flippableEntity.Rotation();
             flippableEntity.Reset();
+        }
+        var flipBox = GetComponent<FlippingBox_New>();
+        if (flipBox != null)
+        {
+            flipBox.BoxReset();
         }
         m_dead = false;
     }

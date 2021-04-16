@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 public static class Stage_Data
 {
     //progression starts at 0
-    static int Progression = 9;
+    static int Progression = 0;
     static List<StageData> stageDatas = new List<StageData>();
 
     public static void Initialise(List<StageData> a_loadedStageData)
     {
+        stageDatas = new List<StageData>();
         for (int i = 0; i < a_loadedStageData.Count; i++)
         {
             stageDatas.Add(a_loadedStageData[i]);

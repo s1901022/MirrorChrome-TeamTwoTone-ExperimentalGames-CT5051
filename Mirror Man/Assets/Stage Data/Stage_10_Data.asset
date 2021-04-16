@@ -15,9 +15,11 @@ MonoBehaviour:
   stageNumber: 10
   stageName: Level 10
   stageBuildName: _Level10
-  stageSelectIcon: {fileID: 21300000, guid: c9f25edbc70784045b2c6281db50946d, type: 3}
+  stageSelectIcon: {fileID: 21300000, guid: bdfa01d3f7f130d448afab9fc161ab2e, type: 3}
   targetTime: 0
   targetnumberOfFlips: 0
+  targetJumps: 0
+  numberOfJumps: 0
   numberOfFlips: 0
   collectableGot: 0
   bestTime: 0

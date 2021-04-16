@@ -27,6 +27,7 @@ public static class SaveSystem
             SaveData data = (SaveData)formatter.Deserialize(fs);
             fs.Close();
 
+            Debug.LogError("Number of stages loaded:" + Stage_Data.GetNumberOfStages());
             for (int i = 0; i < Stage_Data.GetNumberOfStages(); i++)
             {
                 Stage_Data.LoadSavedStageData(i, data);
@@ -44,6 +45,7 @@ public static class SaveSystem
             Stage_Data.GetStageData(i, tempstageData);
             data.AddStageData(i, tempstageData.bestTime, tempstageData.collectableGot, tempstageData.numberOfFlips);
         }
+        Debug.LogError("Number of stages Saved:" + Stage_Data.GetNumberOfStages());
         data.SetProgress(Stage_Data.GetProgress());
         return data;
     }

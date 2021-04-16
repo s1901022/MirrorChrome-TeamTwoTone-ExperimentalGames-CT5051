@@ -70,20 +70,19 @@ public class scrPlayerMovement : MonoBehaviour {
 		if (!m_entity.GetDead()) {
 			moveInput = Input.GetAxis("Horizontal");
 			rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-
-			if (m_entity.GetGrounded()) {
+			if (m_entity.GetGrounded() == true && extraJumps < 0 && rb.velocity.y == 0f)
+			{
 				extraJumps = jumplimit;
 			}
-			if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0) {
-				rb.velocity = Vector2.up * jumpForce;
-				extraJumps--;
-			} else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && m_entity.GetGrounded()) {
+			else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps >= 0 && m_entity.GetGrounded() == true && (rb.velocity.y >= -0.9f && rb.velocity.y <= 0.1f)) {
 				// if the player jumps
 				animState = AnimationStates.Jumping;
 				rb.velocity = Vector2.up * jumpForce;
+				extraJumps -= 1;
 				// set the animation state to jumping
 				Debug.Log("JUMPING");
 			}
+
 			anim.SetInteger("state", (int)animState);
 			StateSwitch();
 		}

@@ -23,6 +23,15 @@ public class FlippingBox_New : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		m_entity = this.gameObject.GetComponent<scrEntity>();
 		checkFlip = initialFlipDirection;
+		rb.gravityScale = initialFlipDirection;
+		if (initialFlipDirection == -1)
+        {
+			GetComponent<SpriteRenderer>().sprite = m_sprites[0];
+		}
+		else
+        {
+			GetComponent<SpriteRenderer>().sprite = m_sprites[1];
+		}
 	}
 
 	private void Update() {
@@ -75,5 +84,19 @@ public class FlippingBox_New : MonoBehaviour {
 		rb.gravityScale *= -1;
 	}
 
-	public bool GetMoving() { return isMoving; }
+    public void BoxReset()
+    {
+		checkFlip = initialFlipDirection;
+		rb.gravityScale = initialFlipDirection;
+		if (initialFlipDirection == -1)
+		{
+			GetComponent<SpriteRenderer>().sprite = m_sprites[0];
+		}
+		else
+		{
+			GetComponent<SpriteRenderer>().sprite = m_sprites[1];
+		}
+	}
+
+    public bool GetMoving() { return isMoving; }
 }

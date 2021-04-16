@@ -17,7 +17,7 @@ public class scrDoor : MonoBehaviour
     void Start()
     {
         //Get Trigger
-        triggerScript = trigger.transform.GetChild(0).gameObject.GetComponent<scrButton>();
+        triggerScript = trigger.GetComponent<scrButton>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<BoxCollider2D>();
     }
