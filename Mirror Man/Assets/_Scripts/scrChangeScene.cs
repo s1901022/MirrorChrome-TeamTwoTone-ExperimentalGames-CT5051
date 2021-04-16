@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class scrChangeScene : MonoBehaviour
 {
+    public string thisScene;
     public string sceneToLoad;
     private Animator anim;
     [SerializeField] private float transitionTime;
@@ -19,6 +20,9 @@ public class scrChangeScene : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         wipe.color = new Color(wipe.color.r, wipe.color.g, wipe.color.b, 1.0f);
     }
+	private void Update() {
+        thisScene = SceneManager.GetActiveScene().name;
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -30,10 +34,18 @@ public class scrChangeScene : MonoBehaviour
 
     public void Load()
     {
-        StartCoroutine(LoadLevel());
+        StartCoroutine(LoadLevel(sceneToLoad));
     }
 
-    IEnumerator LoadLevel()
+    public void Replay() {
+        StartCoroutine(LoadLevel(thisScene));
+	}
+
+    public void LoadMenu() {
+        StartCoroutine(LoadLevel("Initialise"));
+	}
+
+    IEnumerator LoadLevel(string st)
     {
         anim.ResetTrigger("FADE");
         anim.SetTrigger("FADE");
@@ -41,6 +53,6 @@ public class scrChangeScene : MonoBehaviour
         //Real time used as time is paused in the end screen menu
         yield return new WaitForSecondsRealtime(transitionTime);
                     
-        Stage_Loader.LoadSceneSafe(sceneToLoad);
+        Stage_Loader.LoadSceneSafe(st);
     }
 }
