@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TitleScreen : MonoBehaviour
 {
+    // TitleScreen Assets
     [SerializeField]
     Image Play;
     [SerializeField]
@@ -14,6 +15,7 @@ public class TitleScreen : MonoBehaviour
     [SerializeField]
     Image Exit;
 
+    //Sprites
     [SerializeField]
     Image Cursor;
     [SerializeField]
@@ -28,8 +30,8 @@ public class TitleScreen : MonoBehaviour
     [SerializeField]
     Sprite[] sExit = new Sprite[2];
 
-    enum SELECTIONS
-    { 
+    //Enum Selections
+    enum SELECTIONS { 
         PLAY,
         OPTIONS,
         ABOUT,
@@ -38,8 +40,7 @@ public class TitleScreen : MonoBehaviour
     private SELECTIONS selection;
     private int MenuPos;
 
-    private void Update()
-    {
+    private void Update() {
         switch(selection)
         {
             case SELECTIONS.PLAY:
@@ -52,8 +53,7 @@ public class TitleScreen : MonoBehaviour
                     Options.sprite  = sOptions[0];
                     About.sprite    = sAbout[0];
                     Exit.sprite     = sExit[0];
-                    if (Selection())
-                    {
+                    if (Selection()) {
                         StartPlay();
                     }
                     break;
@@ -68,8 +68,7 @@ public class TitleScreen : MonoBehaviour
                     Options.sprite = sOptions[1];
                     About.sprite = sAbout[0];
                     Exit.sprite = sExit[0];
-                    if (Selection())
-                    {
+                    if (Selection()) {
                         StartOptions();
                     }
                     break;
@@ -84,8 +83,7 @@ public class TitleScreen : MonoBehaviour
                     Options.sprite = sOptions[0];
                     About.sprite = sAbout[1];
                     Exit.sprite = sExit[0];
-                    if (Selection())
-                    {
+                    if (Selection()) {
                         StartAbout();
                     }
                     break;
@@ -100,8 +98,7 @@ public class TitleScreen : MonoBehaviour
                     Options.sprite = sOptions[0];
                     About.sprite = sAbout[0];
                     Exit.sprite = sExit[1];
-                    if (Selection())
-                    {
+                    if (Selection()) {
                         StartQuit();
                     }
                     break;
@@ -115,57 +112,46 @@ public class TitleScreen : MonoBehaviour
                 break;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-        {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
             MenuPos--;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        {
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
             MenuPos++;
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
             Application.Quit();
         }
 
-        if (MenuPos < 0)
-        {
+        if (MenuPos < 0) {
             MenuPos = 3;
         }
-        else if (MenuPos > 3)
-        {
+        else if (MenuPos > 3) {
             MenuPos = 0;
         }
         selection = (SELECTIONS)MenuPos;
     }
 
-    private bool Selection()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
-        {
+    private bool Selection() {
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) {
             return true;
         }
         return false;
     }
 
-    void StartPlay()
-    {
+    void StartPlay() {
         SaveSystem.LoadSaveData();
         Stage_Loader.LoadSceneSafe("StageSelect");
     }
 
-    void StartAbout()
-    {
+    void StartAbout() {
         Stage_Loader.LoadSceneSafe("About");
     }
 
-    void StartQuit()
-    {
+    void StartQuit() {
         Application.Quit();
     }
 
-    void StartOptions()
-    {
+    void StartOptions() {
         Stage_Loader.LoadSceneSafe("Options");
     }
 

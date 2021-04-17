@@ -59,6 +59,7 @@ public class FlippingBox_New : MonoBehaviour {
 	}
 
 	private void DetectTerrain() {
+		//Check if landed
 		if (checkFlip == 1f) {
 			hitReflective = Physics2D.Raycast(transform.position - new Vector3(0f, transform.localScale.y, 0f), Vector2.up);
 		} else if (checkFlip == -1f) {
@@ -68,6 +69,7 @@ public class FlippingBox_New : MonoBehaviour {
 	}
 
 	private void Flip() {
+		//Flip the box
 		rb.velocity = new Vector2(0.0f, 0.0f);
 
 		float distanceBetweenReflection = transform.position.y - reflectNormal.position.y;
@@ -84,16 +86,13 @@ public class FlippingBox_New : MonoBehaviour {
 		rb.gravityScale *= -1;
 	}
 
-    public void BoxReset()
-    {
+    public void BoxReset() {
+		//Reset Boxes gravity scale
 		checkFlip = initialFlipDirection;
 		rb.gravityScale = initialFlipDirection;
-		if (initialFlipDirection == -1)
-		{
+		if (initialFlipDirection == -1) {
 			GetComponent<SpriteRenderer>().sprite = m_sprites[0];
-		}
-		else
-		{
+		} else {
 			GetComponent<SpriteRenderer>().sprite = m_sprites[1];
 		}
 	}

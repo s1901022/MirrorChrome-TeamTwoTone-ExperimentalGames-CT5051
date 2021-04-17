@@ -33,8 +33,7 @@ public class scrEntity : MonoBehaviour
     [SerializeField]
     private physicsObjectType physicsType;
 
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
 
         initialPosition = transform.position;
@@ -48,19 +47,16 @@ public class scrEntity : MonoBehaviour
         groundCheck.transform.parent = gameObject.transform;
     }
 
-    void Update()
-    {
+    void Update() {
         grounded = Physics2D.OverlapCircle(groundCheck.transform.position, checkRadius, ground);
-        switch (physicsType)
-        {
+        //Experimented with using different types of physics - mostly unused
+        switch (physicsType) {
             case physicsObjectType.Locked:
                 {
-                    if (!grounded)
-                    {
+                    if (!grounded) {
                         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                     }
-                    else if (grounded == true)
-                    {
+                    else if (grounded == true) {
                         rb.constraints = RigidbodyConstraints2D.None;
                         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                     }
@@ -93,8 +89,7 @@ public class scrEntity : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
+        if (Input.GetKeyDown(KeyCode.R)) {
             Reset();
         }
     }
@@ -102,38 +97,33 @@ public class scrEntity : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         //Handle Death and respawning
-        if (col.gameObject.tag == "Death" && !m_dead)
-        {
+        if (col.gameObject.tag == "Death" && !m_dead) {
             Reset();
         }
     }
 
-    public void Reset()
-    {
+    public void Reset() {
+        //Reset Object to original state
         rb.velocity = new Vector3(0f, 0f, 0f);
         transform.position = initialPosition;
         var flipPlayer = GetComponent<scrSwitchGravity>();
-        if (flipPlayer != null)
-        {
+        if (flipPlayer != null) {
             flipPlayer.Reset();
             flipPlayer.ResetRotation();
         }
         var flippableEntity = GetComponent<scrObjectFlip>();
-        if (flippableEntity != null)
-        {
+        if (flippableEntity != null) {
             flippableEntity.Rotation();
             flippableEntity.Reset();
         }
         var flipBox = GetComponent<FlippingBox_New>();
-        if (flipBox != null)
-        {
+        if (flipBox != null) {
             flipBox.BoxReset();
         }
         m_dead = false;
     }
 
-    public void SwapPhysicsSystem(physicsObjectType a_NewType)
-    {
+    public void SwapPhysicsSystem(physicsObjectType a_NewType) {
         rb.constraints = RigidbodyConstraints2D.None;
         physicsType = a_NewType;
     }

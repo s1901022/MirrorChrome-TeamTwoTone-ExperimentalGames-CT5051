@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Stages data in an easily modifialbe formatt
+
 [System.Serializable]
 [CreateAssetMenu]
-public class StageData : ScriptableObject
-{
+public class StageData : ScriptableObject {
     public int stageNumber;
     public string stageName;
     public string stageBuildName;

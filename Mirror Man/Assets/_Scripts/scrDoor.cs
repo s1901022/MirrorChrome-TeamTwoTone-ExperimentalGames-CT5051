@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scrDoor : MonoBehaviour
-{
+public class scrDoor : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D rb;
 
@@ -14,8 +13,7 @@ public class scrDoor : MonoBehaviour
     [SerializeField]
     Sprite[] sprites;
 
-    void Start()
-    {
+    void Start() {
         //Get Trigger
         triggerScript = trigger.GetComponent<scrButton>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -23,15 +21,11 @@ public class scrDoor : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (triggerScript.flag == true)
-        {
+    void Update() {
+        if (triggerScript.flag == true) {
             rb.enabled = false;
             spriteRenderer.sprite = sprites[1];          
-        }
-        else
-        {
+        } else {
             rb.enabled = true;
             spriteRenderer.sprite = sprites[0];
         }

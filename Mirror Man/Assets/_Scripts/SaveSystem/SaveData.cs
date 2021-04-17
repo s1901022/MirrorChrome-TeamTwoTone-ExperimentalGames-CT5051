@@ -23,35 +23,29 @@ public class SaveData
     bool[,]     levelData_Collectable;
     int [,]     levelData_NumberOfFlips;
 
-    public void InitialiseLevelData(int a_numberOfStages)
-    {
+    public void InitialiseLevelData(int a_numberOfStages) {
         levelData_BestTime = new float[a_numberOfStages, 1];
         levelData_Collectable = new bool[a_numberOfStages, 1];
         levelData_NumberOfFlips = new int[a_numberOfStages, 1];
     }
-    public void AddStageData(int stageNumber, float a_bestTime, bool a_collectable, int a_numberFlips)
-    {
+    public void AddStageData(int stageNumber, float a_bestTime, bool a_collectable, int a_numberFlips) {
         levelData_BestTime[stageNumber, 0] = a_bestTime;
         levelData_Collectable[stageNumber, 0] = a_collectable;
         levelData_NumberOfFlips[stageNumber, 0] = a_numberFlips;
     }
 
-    public void SetProgress(int a_progression)
-    {
+    public void SetProgress(int a_progression) {
         Progression = a_progression;
     }
 
     public int GetProgress() { return Progression; }
-    public bool GetCollectables(int a_levelIndex) 
-    {
+    public bool GetCollectables(int a_levelIndex) {
         return levelData_Collectable[a_levelIndex, 0];
     }
-    public float GetBestTime(int a_levelIndex)
-    {
+    public float GetBestTime(int a_levelIndex) {
         return levelData_BestTime[a_levelIndex, 0];
     }
-    public int GetNumberOfFlips(int a_levelIndex)
-    {
+    public int GetNumberOfFlips(int a_levelIndex) {
         return levelData_NumberOfFlips[a_levelIndex, 0];
     }
 }

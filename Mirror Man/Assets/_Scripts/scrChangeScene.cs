@@ -4,19 +4,20 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class scrChangeScene : MonoBehaviour
-{
+public class scrChangeScene : MonoBehaviour {
+    //Loading
     public string thisScene;
     public string sceneToLoad;
     private Animator anim;
+
+    //Transition effect variables
     [SerializeField] private float transitionTime;
     [SerializeField]
     GameObject canvas;
     [SerializeField]
     Image wipe;
 
-    private void Start()
-    {
+    private void Start() {
         anim = GetComponentInChildren<Animator>();
         wipe.color = new Color(wipe.color.r, wipe.color.g, wipe.color.b, 1.0f);
     }
@@ -24,19 +25,16 @@ public class scrChangeScene : MonoBehaviour
         thisScene = SceneManager.GetActiveScene().name;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
+    void OnTriggerEnter2D(Collider2D col) {
+        if (col.gameObject.tag == "Player") {
+            //Start Exit Level
             col.GetComponent<scrEntity>().GetAudioManager().PlayAudio(0, "Clear");
             canvas.GetComponent<LevelClearScript>().isActive = true;
         }
     }
 
-    public void Load()
-    {
-        if (Stage_Data.GetCurrentStageIndex() < Stage_Data.GetNumberOfStages()-1)
-        {
+    public void Load() {
+        if (Stage_Data.GetCurrentStageIndex() < Stage_Data.GetNumberOfStages()-1) {
             Stage_Data.SetCurrentStageIndex(Stage_Data.GetCurrentStageIndex() + 1);
         }
         StartCoroutine(LoadLevel(sceneToLoad));

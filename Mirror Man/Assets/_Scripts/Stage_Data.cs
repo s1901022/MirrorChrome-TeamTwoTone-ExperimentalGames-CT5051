@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Mostly just getters and setters so that you can access stage data loaded in game
 
 public static class Stage_Data
 {
@@ -11,11 +12,9 @@ public static class Stage_Data
     static List<StageData> stageDatas = new List<StageData>();
     static int currentStageIndex;
 
-    public static void Initialise(List<StageData> a_loadedStageData)
-    {
+    public static void Initialise(List<StageData> a_loadedStageData) {
         stageDatas = new List<StageData>();
-        for (int i = 0; i < a_loadedStageData.Count; i++)
-        {
+        for (int i = 0; i < a_loadedStageData.Count; i++) {
             stageDatas.Add(a_loadedStageData[i]);
             Debug.LogError(a_loadedStageData[i].stageNumber);
             Debug.LogError(stageDatas[i].stageNumber);
@@ -33,8 +32,7 @@ public static class Stage_Data
     public static int GetFlips(int a_index) { return stageDatas[a_index].numberOfFlips; }
     public static bool GetCollectableBool(int a_index) { return stageDatas[a_index].collectableGot; }
 
-    public static void GetStageData(int stageNumber, StageData a_stageData)
-    {
+    public static void GetStageData(int stageNumber, StageData a_stageData) {
         for (int i = 0; i < stageDatas.Count; i++)
         {
             if (stageNumber == stageDatas[i].stageNumber)
@@ -52,12 +50,9 @@ public static class Stage_Data
         Debug.LogError("Stage does not exist");
     }
 
-    public static void SetStageData(StageData a_stageData)
-    {
-        for (int i = 0; i < stageDatas.Count; i++)
-        {
-            if (a_stageData.stageNumber == stageDatas[i].stageNumber)
-            {
+    public static void SetStageData(StageData a_stageData) {
+        for (int i = 0; i < stageDatas.Count; i++) {
+            if (a_stageData.stageNumber == stageDatas[i].stageNumber) {
                 stageDatas[i] = a_stageData;
             }
             return;
@@ -65,10 +60,8 @@ public static class Stage_Data
         Debug.LogError("Stage does not exist");
     }
 
-    public static void LoadSavedStageData(int a_stageNumber, SaveData a_saveData)
-    {
-        if (a_stageNumber < stageDatas.Count)
-        {
+    public static void LoadSavedStageData(int a_stageNumber, SaveData a_saveData) {
+        if (a_stageNumber < stageDatas.Count) {
             stageDatas[a_stageNumber].bestTime = a_saveData.GetBestTime(a_stageNumber);
             stageDatas[a_stageNumber].collectableGot = a_saveData.GetCollectables(a_stageNumber);
             stageDatas[a_stageNumber].numberOfFlips = a_saveData.GetNumberOfFlips(a_stageNumber);
@@ -76,20 +69,16 @@ public static class Stage_Data
         SetProgress(a_saveData.GetProgress());
     }
 
-    public static int GetNumberOfStages()
-    {
+    public static int GetNumberOfStages() {
         return stageDatas.Count;
     }
 
-    public static int GetProgress()
-    {
+    public static int GetProgress() {
         return Progression;
     }
 
-    public static void SetProgress(int a_progress)
-    {
-        if (a_progress > Progression)
-        {
+    public static void SetProgress(int a_progress) {
+        if (a_progress > Progression) {
             Progression = a_progress;
         }
     }

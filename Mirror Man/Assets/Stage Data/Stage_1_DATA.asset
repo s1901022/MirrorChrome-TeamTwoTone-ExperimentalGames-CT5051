@@ -21,5 +21,5 @@ MonoBehaviour:
   targetJumps: 1
   numberOfJumps: 1
   numberOfFlips: 0
-  collectableGot: 0
+  collectableGot: 1
   bestTime: 0

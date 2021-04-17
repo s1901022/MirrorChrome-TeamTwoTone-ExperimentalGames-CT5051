@@ -19,7 +19,7 @@ MonoBehaviour:
   targetTime: 15
   targetnumberOfFlips: 4
   targetJumps: 2
-  numberOfJumps: 2
-  numberOfFlips: 4
-  collectableGot: 0
-  bestTime: 8.615362
+  numberOfJumps: 1
+  numberOfFlips: 0
+  collectableGot: 1
+  bestTime: 4.0885625

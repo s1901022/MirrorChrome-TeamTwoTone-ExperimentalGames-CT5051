@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scrButton : MonoBehaviour
-{
+public class scrButton : MonoBehaviour {
+    //Buttons that activate other objects
     public bool flag;
     public bool flagDefault;
     public bool alwaysSet;
@@ -11,33 +11,17 @@ public class scrButton : MonoBehaviour
     [SerializeField]
     Sprite[] sprites;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void OnTriggerStay2D(Collider2D col)
-    {
+    void OnTriggerStay2D(Collider2D col) {
         //Handle Death and respawning
-        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Entity")
-        {
+        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Entity") {
             GetComponent<SpriteRenderer>().sprite = sprites[1];
-            if (flag == flagDefault)
-            {
+            if (flag == flagDefault) {
                 flag = !flag;
             }           
         }
     }
-    void OnTriggerExit2D(Collider2D col)
-    {
-        if (alwaysSet == false)
-        {
+    void OnTriggerExit2D(Collider2D col) {
+        if (alwaysSet == false) {
             GetComponent<SpriteRenderer>().sprite = sprites[0];
             flag = flagDefault;
         }

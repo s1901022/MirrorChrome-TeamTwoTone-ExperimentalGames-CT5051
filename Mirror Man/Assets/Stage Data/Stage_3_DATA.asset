@@ -18,6 +18,8 @@ MonoBehaviour:
   stageSelectIcon: {fileID: 21300000, guid: 8ab9b3cba0987d94ca5c6db5a733f70a, type: 3}
   targetTime: 0
   targetnumberOfFlips: 0
+  targetJumps: 0
+  numberOfJumps: 0
   numberOfFlips: 0
-  collectableGot: 0
+  collectableGot: 1
   bestTime: 0
