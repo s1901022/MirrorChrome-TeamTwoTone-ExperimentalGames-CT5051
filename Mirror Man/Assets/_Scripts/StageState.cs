@@ -35,4 +35,14 @@ public class StageState : MonoBehaviour
         normalMap.GetComponent<scrTileAlphaFlip>().AlphaFlip(normalMap.GetComponent<scrTileAlphaFlip>().GetInitialAlpha() * -1);
         invertedMap.GetComponent<scrTileAlphaFlip>().AlphaFlip(normalMap.GetComponent<scrTileAlphaFlip>().GetInitialAlpha() * -1);
     }
+
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }

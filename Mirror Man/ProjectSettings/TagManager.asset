@@ -21,6 +21,7 @@ TagManager:
   - EndLevelCanvas
   - Transitions
   - LEG
+  - Music
   layers:
   - Default
   - TransparentFX

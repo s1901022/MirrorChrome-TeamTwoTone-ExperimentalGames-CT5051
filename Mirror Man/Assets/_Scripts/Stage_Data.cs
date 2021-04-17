@@ -9,6 +9,7 @@ public static class Stage_Data
     //progression starts at 0
     static int Progression = 0;
     static List<StageData> stageDatas = new List<StageData>();
+    static int currentStageIndex;
 
     public static void Initialise(List<StageData> a_loadedStageData)
     {
@@ -72,6 +73,7 @@ public static class Stage_Data
             stageDatas[a_stageNumber].collectableGot = a_saveData.GetCollectables(a_stageNumber);
             stageDatas[a_stageNumber].numberOfFlips = a_saveData.GetNumberOfFlips(a_stageNumber);
         }
+        SetProgress(a_saveData.GetProgress());
     }
 
     public static int GetNumberOfStages()
@@ -91,4 +93,7 @@ public static class Stage_Data
             Progression = a_progress;
         }
     }
+
+    public static int GetCurrentStageIndex() { return currentStageIndex; }
+    public static void SetCurrentStageIndex(int a_index) { currentStageIndex = a_index; }
 }

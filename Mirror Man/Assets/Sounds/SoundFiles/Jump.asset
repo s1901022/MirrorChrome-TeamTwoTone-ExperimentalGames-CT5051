@@ -15,4 +15,4 @@ MonoBehaviour:
   soundName: Jump
   audioFile: {fileID: 8300000, guid: 0441725152d8f3b44890b2743fc60d3e, type: 3}
   volume: 1
-  pitch: 3
+  pitch: 2

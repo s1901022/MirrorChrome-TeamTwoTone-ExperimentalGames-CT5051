@@ -18,6 +18,6 @@ public class InitialiseGame : MonoBehaviour
 
         Stage_Data.Initialise(GameStages);
         Stage_Loader.InitialiseStageManager();
-        Stage_Loader.LoadSceneSafe("TitleScreen");
+        Stage_Loader.LoadSceneSafe("TwoTone");
     }
 }

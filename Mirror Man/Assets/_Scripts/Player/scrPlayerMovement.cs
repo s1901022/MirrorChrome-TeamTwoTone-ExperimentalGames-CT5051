@@ -74,8 +74,9 @@ public class scrPlayerMovement : MonoBehaviour {
 			{
 				extraJumps = jumplimit;
 			}
-			else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps >= 0 && m_entity.GetGrounded() == true && (rb.velocity.y >= -0.9f && rb.velocity.y <= 0.1f)) {
+			else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps >= 0 && m_entity.GetGrounded() == true && (rb.velocity.y >= -1f && rb.velocity.y <= 1f)) {
 				// if the player jumps
+				m_entity.GetAudioManager().PlayAudio(0, "Jump");
 				animState = AnimationStates.Jumping;
 				rb.velocity = Vector2.up * jumpForce;
 				extraJumps -= 1;
@@ -109,6 +110,10 @@ public class scrPlayerMovement : MonoBehaviour {
 		} else if (pushingBlock != null && pushingBlock.GetComponent<FlippingBox_New>().GetMoving() == true) {
 			// if the block is moving
 			// set the state to pushing
+			if (m_entity.GetAudioManager().AudioIsPlaying() == false)
+			{
+				m_entity.GetAudioManager().PlayAudio(0, "Push");
+			}
 			animState = AnimationStates.Pushing;
 
 		} else if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon) {
@@ -117,10 +122,16 @@ public class scrPlayerMovement : MonoBehaviour {
 			// set the animation state to running
 			animState = AnimationStates.Running;
 
+			if (m_entity.GetAudioManager().AudioIsPlaying() == false && (rb.velocity.y >= -1f && rb.velocity.y <= 1f))
+            {
+				m_entity.GetAudioManager().PlayAudio(0, "FootStep");
+            }
+
 		} else {
 			// else if the player is doing nothing
 			// set the animation state to idle
 			animState = AnimationStates.Idle;
+			m_entity.GetAudioManager().StopAudio("FootStep");
 		}
 	}
 

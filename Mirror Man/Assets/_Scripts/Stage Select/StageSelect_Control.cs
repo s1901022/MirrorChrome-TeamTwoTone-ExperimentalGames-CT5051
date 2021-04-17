@@ -67,6 +67,10 @@ public class StageSelect_Control : MonoBehaviour
     int lastIndex;
     int nextIndex;
 
+    //Music
+    [SerializeField]
+    Sound levelMusic;
+
     private void Start()
     { 
         //Load Levels into Stage Select
@@ -107,6 +111,9 @@ public class StageSelect_Control : MonoBehaviour
         UpdateIcon();
         UpdateSelection();
         Selection();
+
+
+        QuitGame();
     }
 
     private void UpdateSelection()
@@ -279,7 +286,19 @@ public class StageSelect_Control : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
+            Music musicBox = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>();
+            Stage_Data.SetCurrentStageIndex(currentIndex);
+            musicBox.SetMusic(levelMusic);
+            musicBox.PlayMusic();
             Stage_Loader.LoadSceneSafe(Stage_Data.GetStageBuildName(currentIndex));
+        }
+    }
+
+    private void QuitGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 }

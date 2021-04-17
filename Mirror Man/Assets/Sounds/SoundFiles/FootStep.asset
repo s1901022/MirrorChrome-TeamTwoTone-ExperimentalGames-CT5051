@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FootStep
   m_EditorClassIdentifier: 
   soundName: FootStep
-  audioFile: {fileID: 8300000, guid: c600087e3d542144e9afab61a43bca88, type: 3}
-  volume: 1
-  pitch: 3
+  audioFile: {fileID: 8300000, guid: 282d49cf65297e64980bca588cb5ab10, type: 3}
+  volume: 0.25
+  pitch: 1

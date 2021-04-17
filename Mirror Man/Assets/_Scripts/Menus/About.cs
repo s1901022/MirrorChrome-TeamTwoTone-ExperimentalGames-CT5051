@@ -17,5 +17,10 @@ public class About : MonoBehaviour
         {
             Stage_Loader.LoadSceneSafe("TitleScreen");
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }

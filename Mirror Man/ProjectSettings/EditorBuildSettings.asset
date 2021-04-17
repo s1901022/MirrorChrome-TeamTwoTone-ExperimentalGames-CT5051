@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/Initialise.unity
     guid: 4c24ada9c2c041b46ba543053ec3aa1a
   - enabled: 1
+    path: Assets/_Scenes/TwoTone.unity
+    guid: 46ff85e8a94ebba46a78bc0cca356261
+  - enabled: 1
     path: Assets/_Scenes/TitleScreen.unity
     guid: 5d8adaa8d5767254ba198ff9e99277e7
   - enabled: 1
@@ -17,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/About.unity
     guid: 4169581aa52202a40b3109e5170f3484
+  - enabled: 1
+    path: Assets/_Scenes/EndScreen.unity
+    guid: 7e3564ab3441a6a469ddd13dc02eed29
   - enabled: 1
     path: Assets/_Scenes/StageSelect.unity
     guid: b7e5f4dd1787cf24f87d74c63824fb89

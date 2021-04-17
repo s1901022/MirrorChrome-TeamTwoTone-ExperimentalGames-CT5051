@@ -51,6 +51,14 @@ public class LevelClearScript : MonoBehaviour {
 
 		// if the end of the level is active
 		if (isActive == true) {
+			if (Stage_Data.GetCurrentStageIndex() < Stage_Data.GetNumberOfStages() -1)
+			{
+				if (Stage_Data.GetProgress() < Stage_Data.GetStageNumber(Stage_Data.GetCurrentStageIndex()))
+				{
+				
+					Stage_Data.SetProgress(Stage_Data.GetProgress() + 1);
+				}
+            }
 			// Stop time 
 			Time.timeScale = 0.0f;
 			// loop through the gameobject array

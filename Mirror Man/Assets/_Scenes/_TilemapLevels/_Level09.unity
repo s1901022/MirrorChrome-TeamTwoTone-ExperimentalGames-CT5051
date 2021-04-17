@@ -53858,16 +53858,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage Control
       objectReference: {fileID: 0}
-    - target: {fileID: 830217611466288310, guid: d9a6fbc1e5101db49acb2f4648140e75,
-        type: 3}
-      propertyPath: normalMap
-      value: 
-      objectReference: {fileID: 145147898}
-    - target: {fileID: 830217611466288310, guid: d9a6fbc1e5101db49acb2f4648140e75,
-        type: 3}
-      propertyPath: invertedMap
-      value: 
-      objectReference: {fileID: 145147897}
     - target: {fileID: 830217611466288311, guid: d9a6fbc1e5101db49acb2f4648140e75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -53923,6 +53913,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 830217611466288310, guid: d9a6fbc1e5101db49acb2f4648140e75,
+        type: 3}
+      propertyPath: normalMap
+      value: 
+      objectReference: {fileID: 145147898}
+    - target: {fileID: 830217611466288310, guid: d9a6fbc1e5101db49acb2f4648140e75,
+        type: 3}
+      propertyPath: invertedMap
+      value: 
+      objectReference: {fileID: 145147897}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9a6fbc1e5101db49acb2f4648140e75, type: 3}
 --- !u!1001 &583616025
@@ -54844,7 +54844,7 @@ PrefabInstance:
     - target: {fileID: 1840250707785204966, guid: 9491b74aab0c1a04b9262bd46ff3d54f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1840250707785204966, guid: 9491b74aab0c1a04b9262bd46ff3d54f,
         type: 3}
@@ -56441,7 +56441,7 @@ PrefabInstance:
     - target: {fileID: 1840250707785204966, guid: 9491b74aab0c1a04b9262bd46ff3d54f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1840250707785204966, guid: 9491b74aab0c1a04b9262bd46ff3d54f,
         type: 3}
@@ -57073,16 +57073,16 @@ PrefabInstance:
       propertyPath: invertedMap
       value: 
       objectReference: {fileID: 145147897}
-    - target: {fileID: 841151958774584584, guid: 27fd0b1a5ceb27f4fb1c41eae304b913,
-        type: 3}
-      propertyPath: jumpForce
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 8887104988629896732, guid: 27fd0b1a5ceb27f4fb1c41eae304b913,
         type: 3}
       propertyPath: gameControl
       value: 
       objectReference: {fileID: 661275649}
+    - target: {fileID: 841151958774584584, guid: 27fd0b1a5ceb27f4fb1c41eae304b913,
+        type: 3}
+      propertyPath: jumpForce
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27fd0b1a5ceb27f4fb1c41eae304b913, type: 3}
 --- !u!1001 &2008939567

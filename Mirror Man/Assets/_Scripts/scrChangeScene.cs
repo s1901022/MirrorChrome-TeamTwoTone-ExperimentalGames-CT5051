@@ -28,12 +28,17 @@ public class scrChangeScene : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
+            col.GetComponent<scrEntity>().GetAudioManager().PlayAudio(0, "Clear");
             canvas.GetComponent<LevelClearScript>().isActive = true;
         }
     }
 
     public void Load()
     {
+        if (Stage_Data.GetCurrentStageIndex() < Stage_Data.GetNumberOfStages()-1)
+        {
+            Stage_Data.SetCurrentStageIndex(Stage_Data.GetCurrentStageIndex() + 1);
+        }
         StartCoroutine(LoadLevel(sceneToLoad));
     }
 

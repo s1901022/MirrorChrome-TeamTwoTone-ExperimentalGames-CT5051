@@ -123,6 +123,10 @@ public class TitleScreen : MonoBehaviour
         {
             MenuPos++;
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 
         if (MenuPos < 0)
         {

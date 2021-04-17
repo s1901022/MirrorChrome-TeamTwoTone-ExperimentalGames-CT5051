@@ -73,6 +73,13 @@ public class Options : MonoBehaviour
             menuPos = 0;
         }
         selection = (OPTIONS)menuPos;
+
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void ClearData()
